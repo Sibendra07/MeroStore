@@ -51,7 +51,7 @@ class Products(models.Model):
     date_added = models.DateTimeField(default=timezone.now)
     date_updated = models.DateTimeField(auto_now=True)
     quantity = models.PositiveIntegerField(default=0)
-
+    
     class Meta:
         indexes = [
             models.Index(fields=['code']),

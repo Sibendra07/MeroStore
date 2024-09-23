@@ -25,8 +25,7 @@
     <link rel="stylesheet" href="{% static 'posApp/assets/material-admin/css/demo/style.css' %}">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="{% static 'posApp/assets/material-admin/images/favicon.png' %}" />
-    <script src="{% static 'posApp/assets/default/js/jquery-3.6.0.min.js' %}">
-    </script>
+    <script src="{% static 'posApp/assets/default/js/jquery-3.6.0.min.js' %}"></script>
     <script src="{% static 'posApp/assets/bootstrap/js/bootstrap.min.js' %}"></script>
     <script src="{% static 'posApp/assets/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
     <script src="{% static 'posApp/assets/bootstrap/js/popper.min.js' %}"></script>
@@ -42,7 +41,7 @@
                         <div class="mdc-layout-grid__inner justify-content-center">
                             <div class="mdc-layout-grid__cell--span-2-desktop"></div>
                             <div class="mdc-card mdc-layout-grid__cell--span-8-desktop mdc-layout-grid__cell--span-1-tablet mb-5">
-                                <h3 class="text-center">Sistema de Punto de Venta</h3>
+                                <h3 class="text-center">Point of Sale System</h3>
                             </div>
                         </div>
                         <div class="mdc-layout-grid__inner">
@@ -79,7 +78,7 @@
                                                 </div>
                                                 <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
                                                     <a href="{% url 'password_reset' %}" class="mdc-button mdc-button--outlined w-100">
-                                                        Reiniciar la Contraseña
+                                                        Reset Password
                                                     </a>
                                                 </div>
                                             </div>
@@ -91,7 +90,7 @@
                         </div>
                     </div>
                 </main>
-                </div>
+            </div>
         </div>
     </div>
     <script>
@@ -107,14 +106,14 @@
                 url: $url,
                 error: err => {
                     console.log()
-                    alert("An error occured")
+                    alert("An error occurred")
                 },
                 success: function(resp) {
                     if (resp) {
                         $('#uni_modal .modal-title').html($title)
                         $('#uni_modal .modal-body').html(resp)
                         if ($size != '') {
-                            $('#uni_modal .modal-dialog').addClass($size + '  modal-dialog-centered')
+                            $('#uni_modal .modal-dialog').addClass($size + ' modal-dialog-centered')
                         } else {
                             $('#uni_modal .modal-dialog').removeAttr("class").addClass("modal-dialog modal-md modal-dialog-centered")
                         }
@@ -171,7 +170,7 @@
                     dataType: 'json',
                     error: err => {
                         console.log(err)
-                        alert_toast("An error occured", 'error');
+                        alert_toast("An error occurred", 'error');
                         end_loader();
                     },
                     success: function(resp) {
@@ -181,7 +180,7 @@
                         } else if (resp.status == 'failed' && !!resp.msg) {
                             el.text(resp.msg)
                         } else {
-                            el.text("An error occured", 'error');
+                            el.text("An error occurred", 'error');
                             end_loader();
                             console.err(resp)
                         }

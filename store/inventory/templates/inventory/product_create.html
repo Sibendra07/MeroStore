@@ -4,7 +4,7 @@
 <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
     <div class="mdc-card py-2">
         <div class="d-flex justify-content-between align-items-center">
-            <h4 class="card-title mb-0">Crear Producto</h4>
+            <h4 class="card-title mb-0">Create Product</h4>
         </div>
     </div>
 </div>
@@ -87,9 +87,9 @@
                     <div class="col-md-6">
                         <label class="form-label">{{ form.status.label }}</label>
                         {% if form.instance.status %}
-                            <span class="badge bg-success">Activo</span>
+                            <span class="badge bg-success">Asset</span>
                         {% else %}
-                            <span class="badge bg-warning">Inactivo</span>
+                            <span class="badge bg-warning">Idle</span>
                         {% endif %}
                         {% if form.status.errors %}
                             <div class="text-danger">
@@ -102,19 +102,19 @@
                 </div>
                 <div class="form-group row">
                     <div class="col-md-6">
-                        <label class="form-label">Fecha de Creación</label>
-                        <p>No disponible en creación</p>
+                        <label class="form-label">Creation Date</label>
+                        <p>Not available in creation</p>
                     </div>
                     <div class="col-md-6">
-                        <label class="form-label">Fecha de Actualización</label>
-                        <p>No disponible en creación</p>
+                        <label class="form-label">Update Date</label>
+                        <p>Not available in creation</p>
                     </div>
                 </div>
                 <div class="form-group row mt-3">
                     <div class="col-12 d-flex justify-content-between">
                         <div class="btn-group">
-                            <a href="{% url 'inventory:product_list' %}" class="btn btn-secondary">Volver a la lista de categorías</a>
-                            <button type="submit" class="btn btn-success">Guardar</button>
+                            <a href="{% url 'inventory:product_list' %}" class="btn btn-secondary">Return to category list</a>
+                            <button type="submit" class="btn btn-success">Keep</button>
                         </div>
                     </div>
                 </div>

@@ -88,8 +88,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.yourmailserver.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'your-email@yourdomain.com'
-EMAIL_HOST_PASSWORD = 'your-email-password'
+EMAIL_HOST_USER = 'sibendra07@gmail.com'
+EMAIL_HOST_PASSWORD = 'wsftiflxtgwxcylq'
 
 
 
@@ -126,9 +126,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
-LANGUAGE_CODE = 'es'
+LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'America/La_Paz'
+TIME_ZONE = 'Asia/Kathmandu'
 
 USE_I18N = True
 

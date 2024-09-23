@@ -3,7 +3,7 @@
 <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
     <div class="mdc-card">
         <div class="d-flex justify-content-between">
-            <h4 class="card-title mb-0">Pagina de Inicio</h4>
+            <h4 class="card-title mb-0">Home Page</h4>
         </div>
     </div>
 </div>
@@ -14,10 +14,10 @@
     <div class="mdc-card info-card info-card--success">
         <div class="card-inner">
             <h5 class="card-title">
-                <a href="{% url 'inventory:category_list' %}">Categorias</a>
+                <a href="{% url 'inventory:category_list' %}">Categories</a>
             </h5>
             <h5 class="font-weight-light pb-2 mb-1 border-bottom">{{ categories|intcomma }}</h5>
-            <p class="tx-12 text-muted">Cantidad de Categorias</p>
+            <p class="tx-12 text-muted">Number of Categories</p>
             
             <div class="card-icon-wrapper">
                 <i class="material-icons">list</i>
@@ -29,10 +29,10 @@
     <div class="mdc-card info-card info-card--primary">
         <div class="card-inner">
             <h5 class="card-title">
-                <a href="{% url 'inventory:product_list' %}">Productos</a>
+                <a href="{% url 'inventory:product_list' %}">Products</a>
             </h5>
             <h5 class="font-weight-light pb-2 mb-1 border-bottom">{{ products|intcomma }}</h5>
-            <p class="tx-12 text-muted">Cantidad de Productos</p>
+            <p class="tx-12 text-muted">Quantity of Products</p>
             <div class="card-icon-wrapper">
                 <i class="material-icons">label</i>
             </div>
@@ -43,10 +43,10 @@
     <div class="mdc-card info-card info-card--info">
         <div class="card-inner">
             <h5 class="card-title">
-                <a href="{% url 'pos:sales-page' %}">Transacciones de Hoy</a>
+                <a href="{% url 'pos:sales-page' %}">Today's Transactions</a>
             </h5>
             <h5 class="font-weight-light pb-2 mb-1 border-bottom">{{ transaction|intcomma }}</h5>
-            <p class="tx-12 text-muted">Cantidad de las Transacciones de Hoy</p>
+            <p class="tx-12 text-muted">Amount of Today's Transactions</p>
             <div class="card-icon-wrapper">
                 <i class="material-icons">receipt</i>
             </div>
@@ -56,9 +56,9 @@
 <div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-3-desktop mdc-layout-grid__cell--span-3-tablet">
     <div class="mdc-card info-card info-card--warning">
         <div class="card-inner">
-            <h5 class="card-title">Ventas de Hoy</h5>
+            <h5 class="card-title">Today's Sales</h5>
             <h5 class="font-weight-light pb-2 mb-1 border-bottom">{{ total_sales|intcomma }}</h5>
-            <p class="tx-12 text-muted">Ventas Totales de Hoy</p>
+            <p class="tx-12 text-muted">Today's Total Sales</p>
             <div class="card-icon-wrapper">
                 <i class="mdi mdi-cash-multiple"></i>
             </div>
@@ -69,10 +69,10 @@
     <div class="mdc-card info-card info-card--warning">
         <div class="card-inner">
             <h5 class="card-title">
-                <a href="{% url 'purchase:supplier_list' %}">Transacciones de Hoy</a>
+                <a href="{% url 'purchase:supplier_list' %}">Today's Transactions</a>
             </h5>
             <h5 class="font-weight-light pb-2 mb-1 border-bottom">{{ total_sales|intcomma }}</h5>
-            <p class="tx-12 text-muted">Ventas Totales de Hoy</p>
+            <p class="tx-12 text-muted">Today's Total Sales</p>
             <div class="card-icon-wrapper">
                 <i class="mdi mdi-cash-multiple"></i>
             </div>
@@ -84,10 +84,10 @@
     <div class="mdc-card info-card info-card--warning">
         <div class="card-inner">
             <h5 class="card-title">
-                <a href="{% url 'report:mix_report' %}">Reportes Diario de Transacciones</a>
+                <a href="{% url 'report:mix_report' %}">Daily Transaction Reports</a>
             </h5>
             <h5 class="font-weight-light pb-2 mb-1 border-bottom">{{ total_sales|intcomma }}</h5>
-            <p class="tx-12 text-muted">Ventas Totales de Hoy</p>
+            <p class="tx-12 text-muted">Today's Total Sales</p>
             <div class="card-icon-wrapper">
                 <i class="mdi mdi-cash-multiple"></i>
             </div>

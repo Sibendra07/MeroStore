@@ -11,17 +11,17 @@ class CategoryForm(forms.ModelForm):
         model = Category
         fields = ['name', 'description']
         labels = {
-            'name': 'Nombre',
-            'description': 'Descripcion',
+            'name': 'Name',
+            'description': 'Description',
         }
         widgets = {
             'name': forms.TextInput(attrs={
                 'class': 'form-control',
-                'placeholder': 'Vino Dulce',
+                'placeholder': 'Sweet wine',
             }),
             'description': forms.Textarea(attrs={
                 'class': 'form-control',
-                'placeholder': 'Ingrese información general Etc.',
+                'placeholder': 'Enter general information Etc.',
                 'rows': 3,  
             }),
             
@@ -55,42 +55,42 @@ class ProductsForm(forms.ModelForm):
         model = Products
         fields = ['code', 'category', 'name', 'description', 'price', 'status']
         labels = {
-            'code': 'Código',
-            'category': 'Categoría',
-            'name': 'Nombre del Producto',
-            'description': 'Descripción',
-            'price': 'Precio',
-            'status': 'Estado',
-            'cost': 'Costo',
-            'quantity': 'Cantidad',
+            'code': 'Code',
+            'category': 'Category',
+            'name': 'Product Name',
+            'description': 'Description',
+            'price': 'Price',
+            'status': 'State',
+            'cost': 'Cost',
+            'quantity': 'Amount',
         }
         widgets = {
             'code': forms.TextInput(attrs={
                 'class': 'form-control',
-                'placeholder': 'Vino001',
+                'placeholder': 'Wine001',
             }),
             'category': forms.Select(attrs={
                 'class': 'form-control',
             }),
             'name': forms.TextInput(attrs={
                 'class': 'form-control',
-                'placeholder': 'Vino Dulce',
+                'placeholder': 'Sweet wine',
             }),
             'description': forms.Textarea(attrs={
                 'class': 'form-control',
-                'placeholder': 'Ingrese información general Etc.',
+                'placeholder': 'Enter general information Etc.',
                 'rows': 3,
             }),
             'price': forms.NumberInput(attrs={
                 'class': 'form-control',
-                'placeholder': 'Ingrese el precio del producto',
+                'placeholder': 'Enter the price of the product',
                 'step': '0.01',
             }),
             'status': forms.Select(attrs={
                 'class': 'form-control',
             }, choices=[
-                (1, 'Activo'),
-                (0, 'Inactivo')
+                (1, 'active'),
+                (0, 'idle')
             ]),
             
             'cost': forms.NumberInput(attrs={
@@ -100,29 +100,29 @@ class ProductsForm(forms.ModelForm):
         }
         error_messages = {
             'code': {
-                'required': 'Este campo es obligatorio.',
-                'max_length': 'Este campo no puede exceder de 100 caracteres.',
+                'required': 'This field is required.',
+                'max_length': 'This field cannot exceed 100 characters.',
             },
             'category': {
-                'required': 'Este campo es obligatorio.',
+                'required': 'This field is required',
             },
             'name': {
-                'required': 'Este campo es obligatorio.',
+                'required': 'This field is required',
             },
             'description': {
-                'required': 'Este campo es obligatorio.',
+                'required': 'This field is required',
             },
             'price': {
-                'required': 'Este campo es obligatorio.',
-                'invalid': 'Ingrese un precio válido.',
+                'required': 'This field is required',
+                'invalid': 'Please enter a valid price.',
             },
             'status': {
-                'required': 'Este campo es obligatorio.',
-                'invalid': 'Ingrese un estado válido.',
+                'required': 'This field is required',
+                'invalid': 'Please enter a valid status.',
             }
         }
     def __init__(self, *args, **kwargs):
-        super(ProductForm, self).__init__(*args, **kwargs)
+        super(ProductsForm, self).__init__(*args, **kwargs)
         for field in self.fields.values():
             field.widget.attrs['class'] = 'form-control'
             if field.errors:
@@ -131,19 +131,19 @@ class ProductsForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         
-        # Ordenar el queryset de category alfabéticamente
+        # Sort the category queryset alphabetically
         self.fields['category'].queryset = Category.objects.all().order_by('name')
-        # Establecer el campo como no editable
+        #Set the field as non-editable
         self.fields['status'].disabled = True
     
     
     @staticmethod
     def normalize_text(text):
         if text:
-            # Eliminar acentos y convertir a minúsculas
+            #Remove accents and convert to lowercase
             text = ''.join(c for c in unicodedata.normalize('NFD', text)
                         if unicodedata.category(c) != 'Mn')
-            # Eliminar caracteres especiales y espacios
+            # Remove special characters and spaces
             text = re.sub(r'[^\w]', '', text.lower())
         return text
     
@@ -156,26 +156,26 @@ class ProductsForm(forms.ModelForm):
             normalized_name = self.normalize_text(name)
             normalized_code = self.normalize_text(code)
 
-            # Obtener la instancia actual si estamos editando
+            #Get the current instance if we are editing
             instance_id = self.instance.pk if self.instance.pk else None
 
-            # Verificar duplicados de nombre
+            # Check name duplicates
             name_duplicates = Products.objects.all()
             if instance_id:
                 name_duplicates = name_duplicates.exclude(pk=instance_id)
             
             for product in name_duplicates:
                 if self.normalize_text(product.name) == normalized_name:
-                    self.add_error('name', "Ya existe un producto con un nombre similar.")
-                    raise ValidationError("Ya existe un producto con un nombre similar.")
+                    self.add_error('name', "A product with a similar name already exists.")
+                    raise ValidationError("There is already a product with a similar name.")
 
-            # Verificar duplicados de código
+            # Check code duplicates
             code_duplicates = Products.objects.filter(code__iexact=normalized_code)
             if instance_id:
                 code_duplicates = code_duplicates.exclude(pk=instance_id)
             if code_duplicates.exists():
-                self.add_error('code', "Ya existe un producto con este código.")
-                raise ValidationError("Ya existe un producto con este código.")
+                self.add_error('code', "A product already exists with this code.")
+                raise ValidationError("A product already exists with this code.")
 
         return cleaned_data
     
